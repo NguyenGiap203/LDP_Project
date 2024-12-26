@@ -37,8 +37,10 @@ def image_detector():
     # Predicts the model
     prediction = model.predict(image)
     index = np.argmax(prediction)
+    if index == 0: return 0
     class_name = class_names[index]
     confidence_score = prediction[0][index]
 
     # Print prediction and confidence score
-    return (str(np.round(confidence_score * 100))[:-2] + "% " + class_name[2:])
+    # return (str(np.round(confidence_score * 100))[:-2] + "% " + class_name[2:])
+    return (class_name[2:])
